@@ -27,3 +27,9 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Install fontawsome
+```sh 
+ npm install @fortawesome/fontawesome-free
+ 
+ ```

@@ -7,8 +7,8 @@
         aria-hidden="true"
       ></div>
   
-      <div class="container mx-auto max-w-5xl">
-        <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center relative">Our Guiding Principles</h2>
+      <div class="container mx-auto ">
+        <h2 class="text-3xl font-semibold text-orange mb-8 text-center relative">Our Guiding Principles</h2>
   
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           <!-- Mission -->

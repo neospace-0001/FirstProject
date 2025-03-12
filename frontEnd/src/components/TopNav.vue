@@ -1,7 +1,7 @@
 <template>
   <section class="w-full bg-orange py-2 md:py-4 text-white">
     <div
-      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center"
+      class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center"
     >
       <!-- Left: Contact Information -->
       <ul

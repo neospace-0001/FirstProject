@@ -1,45 +1,92 @@
 <template>
-  <div class="carousel-container">
+  <div class="w-full bg-orange-50 relative overflow-hidden">
     <!-- Main carousel display -->
-    <div class="carousel-wrapper">
-      <div class="carousel-content" 
-     :style="{ 
-       transform: isInitialLoad 
-         ? 'translateX(-100%)' 
-         : `translateX(-${currentIndex * 100}%)`
-     }">
-        <div 
-          v-for="(item, index) in carouselItems" 
-          :key="index" 
-          class="carousel-item"
+    <div class="overflow-hidden relative">
+      <div
+        class="flex transition-transform duration-800 ease-linear"
+        :style="{
+          transform: isInitialLoad
+            ? 'translateX(-100%)'
+            : `translateX(-${currentIndex * 100}%)`,
+        }"
+      >
+        <div
+          v-for="(item, index) in carouselItems"
+          :key="index"
+          class="relative w-full gap-5 flex-shrink-0"
         >
-          <img :src="item.image" :alt="item.alt" class="carousel-image">
-          <div class="carousel-caption">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
+          <div
+            class="w-full h-[80vh] bg-cover bg-center relative"
+            :style="{ backgroundImage: `url(${item.image})` }"
+            :aria-label="item.alt"
+            role="img"
+          >
+            <div
+              class="absolute bottom-32 rounded-full bg-white right-32 w-120 h-120 border-5 shadow-2xl border-orange  text-orange p-5 flex flex-col justify-center items-center"
+            >
+              <h3 class="text-xl mb-2 font-semibold">{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+            </div>
           </div>
         </div>
       </div>
-      
+
       <!-- Navigation buttons -->
-      <button @click="prevSlide" class="carousel-control prev" aria-label="Previous slide">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+      <button
+        @click="prevSlide"
+        class="absolute top-1/2 transform -translate-y-1/2 bg-orange hover:bg-orange/80 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 left-2"
+        aria-label="Previous slide"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-left"
+        >
+          <path d="m15 18-6-6 6-6" />
+        </svg>
       </button>
-      <button @click="nextSlide" class="carousel-control next" aria-label="Next slide">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+      <button
+        @click="nextSlide"
+        class="absolute top-1/2 transform -translate-y-1/2  bg-orange hover:bg-orange/80 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 right-2"
+        aria-label="Next slide"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-right"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
       </button>
     </div>
-    
+
     <!-- Indicators -->
-    <div class="carousel-indicators">
-      <button 
-        v-for="(_, index) in carouselItems" 
+    <!-- <div class="flex justify-center gap-2">
+      <button
+        v-for="(_, index) in carouselItems"
         :key="index"
         @click="goToSlide(index)"
-        :class="['indicator', { active: currentIndex === index }]"
+        :class="[
+          'w-3 h-3 rounded-full bg-gray-300 cursor-pointer my-5 transition-colors duration-300',
+          { 'bg-orange': currentIndex === index },
+        ]"
         :aria-label="`Go to slide ${index + 1}`"
       ></button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -107,7 +154,7 @@ onMounted(() => {
   setTimeout(() => {
     isInitialLoad.value = false;
   }, 100);
-  
+
   // Start the auto-rotation after the initial animation
   setTimeout(() => {
     intervalId = setInterval(nextSlide, 3000);
@@ -119,113 +166,4 @@ onUnmounted(() => {
 });
 </script>
 
-<style scoped>
-.carousel-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.carousel-content {
-  display: flex;
-  transition: transform 0.8s ease;
-  height: 400px;
-}
-
-.carousel-item {
-  min-width: 100%;
-  position: relative;
-}
-
-.carousel-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.carousel-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 20px;
-}
-
-.carousel-caption h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.5rem;
-}
-
-.carousel-control {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.5);
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.carousel-control:hover {
-  background: rgba(255, 255, 255, 0.8);
-}
-
-.carousel-control.prev {
-  left: 10px;
-}
-
-.carousel-control.next {
-  right: 10px;
-}
-
-.carousel-indicators {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  gap: 8px;
-}
-
-.indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #ccc;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.indicator.active {
-  background: #333;
-}
-
-@media (max-width: 768px) {
-  .carousel-content {
-    height: 300px;
-  }
-  
-  .carousel-caption {
-    padding: 10px;
-  }
-  
-  .carousel-caption h3 {
-    font-size: 1.2rem;
-  }
-}
-</style>
+<style scoped></style>
