@@ -58,7 +58,7 @@
     Our Core Values
   </h1>
 
-  <ul class="grid grid-cols-2 gap-5 md:grid-cols-4 mx-auto pt-10 text-gray-700 gap-4">
+  <ul class="grid grid-cols-2 md:grid-cols-4 mx-auto pt-10 text-gray-700 gap-4">
     <li
       v-for="(value, index) in values"
       :key="index"

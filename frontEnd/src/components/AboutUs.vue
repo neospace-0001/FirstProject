@@ -43,13 +43,12 @@
               transition: 'transform 3s ease-in-out',
             }"
           >
-            
             <img
               v-for="(image, index) in images"
               :key="index"
               :src="image"
               alt="Image"
-              class="w-full h-90 object-cover"
+              class="w-full h-90 object-fit"
             />
           </div>
         </div>
