@@ -20,7 +20,7 @@
           > 
           <!-- div for small screens -->
           <div
-            class=" absolute top-0 bottom-0 left-0 right-0 px-4 text-center bg-black/80 text-orange flex flex-col justify-end items-center pb-16"
+            class=" absolute top-0 bottom-0 left-0 right-0 px-4 text-center md:hidden bg-black/80 text-orange flex flex-col justify-end items-center pb-16"
           >
             <h3 class="text-xl mb-2 font-semibold">{{ item.title }}</h3>
             <p>{{ item.description }}</p>
