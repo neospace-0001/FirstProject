@@ -87,22 +87,27 @@ const vision = ref(
   "To transform education globally by fostering a culture of creativity and leadership in STEM, where every student is inspired to innovate, solve problems, and lead in their fields."
 );
 
+import exce from '../assets/media/excellence.png';
+import incl from '../assets/media/inclusivity.png';
+import ino from '../assets/media/inovate.png';
+import empo from '../assets/media/empowerment.png';
+
 const values = ref([
   {
     text: "Excellence",
-    img: "../src/assets/media/excellence.png",
+    img: exce,
   },
   {
     text: "Inclusivity",
-    img: "../src/assets/media/inclusivity.png",
+    img: incl,
   },
   {
     text: "Innovation",
-    img: "../src/assets/media/inovate.png",
+    img: ino,
   },
   {
     text: "Empowerment",
-    img: "../src/assets/media/empowerment.png",
+    img: empo,
   },
 ]);
 </script>
