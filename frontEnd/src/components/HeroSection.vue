@@ -48,21 +48,25 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 
+import hero from "../assets/media/hero.jpg";
+import hero1 from "../assets/media/hero1.jpg";
+import hero2 from "../assets/media/hero2.jpg";
+
 const carouselItems = ref([
   {
-    image: "../src/assets/media/hero.jpg",
+    image: hero,
     alt: "Image 1",
     title: "Education Tech",
     description: "This is some example text for the first carousel item.",
   },
   {
-    image: "../src/assets/media/hero1.jpg",
+    image: hero1,
     alt: "Image 2",
     title: "Software",
     description: "This is some example text for the second carousel item.",
   },
   {
-    image: "../src/assets/media/hero2.jpg",
+    image: hero2,
     alt: "Image 3",
     title: "engineering",
     description: "This is some example text for the third carousel item.",
