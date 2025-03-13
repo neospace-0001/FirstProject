@@ -3,8 +3,7 @@
     <!-- Main carousel display -->
     <div class="overflow-hidden relative">
       <div
-        class="relative" 
-        :style="{ height: '80vh' }" 
+        class="relative h-[50vh] md:h-[70vh]" 
       >
         <div
           v-for="(item, index) in carouselItems"
@@ -14,13 +13,22 @@
           :aria-hidden="currentIndex !== index"
         >
           <div
-            class="w-full h-full bg-cover bg-center"
+            class="w-full h-full bg-cover  bg-center"
             :style="{ backgroundImage: `url(${item.image})` }"
             :aria-label="item.alt"
             role="img"
-          >
+          > 
+          <!-- div for small screens -->
           <div
-            class="absolute bottom-32 rounded-full bg-white right-32 w-120 h-120 border-5 shadow-2xl border-orange  text-orange p-5 flex flex-col justify-center items-center"
+            class=" absolute top-0 bottom-0 left-0 right-0 px-4 text-center bg-black/80 text-orange flex flex-col justify-end items-center pb-16"
+          >
+            <h3 class="text-xl mb-2 font-semibold">{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+
+          <!-- Div for big screen -->
+          <div
+            class="hidden absolute bottom-32 rounded-full bg-white right-32 w-120 h-120 border-5 shadow-2xl border-orange  text-orange p-5 md:flex flex-col justify-center items-center"
           >
             <h3 class="text-xl mb-2 font-semibold">{{ item.title }}</h3>
             <p>{{ item.description }}</p>
