@@ -3,36 +3,34 @@
     <!-- Main carousel display -->
     <div class="overflow-hidden relative">
       <div
-        class="flex transition-transform duration-800 ease-linear"
-        :style="{
-          transform: isInitialLoad
-            ? 'translateX(-100%)'
-            : `translateX(-${currentIndex * 100}%)`,
-        }"
+        class="relative" 
+        :style="{ height: '80vh' }" 
       >
         <div
           v-for="(item, index) in carouselItems"
           :key="index"
-          class="relative w-full gap-5 flex-shrink-0"
+          class="absolute top-0 left-0 w-full h-full transition-opacity duration-800 ease-in-out"
+          :class="{ 'opacity-100': currentIndex === index, 'opacity-0': currentIndex !== index }"
+          :aria-hidden="currentIndex !== index"
         >
           <div
-            class="w-full h-[80vh] bg-cover bg-center relative"
+            class="w-full h-full bg-cover bg-center"
             :style="{ backgroundImage: `url(${item.image})` }"
             :aria-label="item.alt"
             role="img"
           >
-            <div
-              class="absolute bottom-32 rounded-full bg-white right-32 w-120 h-120 border-5 shadow-2xl border-orange  text-orange p-5 flex flex-col justify-center items-center"
-            >
-              <h3 class="text-xl mb-2 font-semibold">{{ item.title }}</h3>
-              <p>{{ item.description }}</p>
-            </div>
+          <div
+            class="absolute bottom-32 rounded-full bg-white right-32 w-120 h-120 border-5 shadow-2xl border-orange  text-orange p-5 flex flex-col justify-center items-center"
+          >
+            <h3 class="text-xl mb-2 font-semibold">{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
           </div>
         </div>
       </div>
 
       <!-- Navigation buttons -->
-      <button
+      <!-- <button
         @click="prevSlide"
         class="absolute top-1/2 transform -translate-y-1/2 bg-orange hover:bg-orange/80 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 left-2"
         aria-label="Previous slide"
@@ -71,22 +69,8 @@
         >
           <path d="m9 18 6-6-6-6" />
         </svg>
-      </button>
+      </button> -->
     </div>
-
-    <!-- Indicators -->
-    <!-- <div class="flex justify-center gap-2">
-      <button
-        v-for="(_, index) in carouselItems"
-        :key="index"
-        @click="goToSlide(index)"
-        :class="[
-          'w-3 h-3 rounded-full bg-gray-300 cursor-pointer my-5 transition-colors duration-300',
-          { 'bg-orange': currentIndex === index },
-        ]"
-        :aria-label="`Go to slide ${index + 1}`"
-      ></button>
-    </div> -->
   </div>
 </template>
 
@@ -115,20 +99,7 @@ const carouselItems = ref([
     description:
       "Item 3 Description: This is some example text for the third carousel item.",
   },
-  {
-    image: "../src/assets/media/hero1.jpg",
-    alt: "Image 2",
-    title: "Software",
-    description:
-      "Item 2 Description: This is some example text for the second carousel item.",
-  },
-  {
-    image: "../src/assets/media/hero2.jpg",
-    alt: "Image 3",
-    title: "engineering",
-    description:
-      "Item 3 Description: This is some example text for the third carousel item.",
-  },
+
 ]);
 
 const currentIndex = ref(0);
@@ -138,16 +109,12 @@ let intervalId;
 const nextSlide = () => {
   currentIndex.value = (currentIndex.value + 1) % carouselItems.value.length;
 };
+// const prevSlide = () => {
+//   currentIndex.value =
+//     (currentIndex.value - 1 + carouselItems.value.length) %
+//     carouselItems.value.length;
+// };
 
-const prevSlide = () => {
-  currentIndex.value =
-    (currentIndex.value - 1 + carouselItems.value.length) %
-    carouselItems.value.length;
-};
-
-const goToSlide = (index) => {
-  currentIndex.value = index;
-};
 
 onMounted(() => {
   // Short delay before starting the animation
@@ -157,8 +124,8 @@ onMounted(() => {
 
   // Start the auto-rotation after the initial animation
   setTimeout(() => {
-    intervalId = setInterval(nextSlide, 3000);
-  }, 1000);
+    intervalId = setInterval(nextSlide, 5000);
+  }, 5000);
 });
 
 onUnmounted(() => {
@@ -166,4 +133,19 @@ onUnmounted(() => {
 });
 </script>
 
-<style scoped></style>
+
+
+<style scoped>
+@keyframes rotateScale {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+</style>
+

@@ -43,11 +43,11 @@
   import { ref } from 'vue';
   
   const mission = ref(
-    "To empower individuals and organizations to achieve their full potential through innovative solutions and unwavering support."
+    "To inspire students through innovative STEM education, empower them to solve real-world challenges, and equip them with the skills to lead in a technology-driven future."
   );
   
   const vision = ref(
-    "To be a global leader in providing transformative services that create lasting positive impact on communities and the world."
+    "To transform education globally by fostering a culture of creativity and leadership in STEM, where every student is inspired to innovate, solve problems, and lead in their fields."
   );
   
   const values = ref([
