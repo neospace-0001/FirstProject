@@ -20,7 +20,7 @@
           > 
           <!-- div for small screens -->
           <div
-            class=" absolute top-0 bottom-0 left-0 right-0 px-4 text-center bg-black/80 text-orange flex flex-col justify-end items-center pb-16"
+            class=" absolute top-0 bottom-0 left-0 right-0 px-4 text-center md:hidden bg-black/80 text-orange flex flex-col justify-end items-center pb-16"
           >
             <h3 class="text-xl mb-2 font-semibold">{{ item.title }}</h3>
             <p>{{ item.description }}</p>
@@ -28,10 +28,10 @@
 
           <!-- Div for big screen -->
           <div
-            class="hidden absolute bottom-32 rounded-full bg-white right-32 w-120 h-120 border-5 shadow-2xl border-orange  text-orange p-5 md:flex flex-col justify-center items-center"
+            class="hidden absolute bottom-32 rounded-full bg-black/80 right-32 w-120 h-120 border-5 shadow-2xl border-orange  text-orange p-5 md:flex flex-col justify-center items-center"
           >
-            <h3 class="text-xl mb-2 font-semibold">{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
+            <h3 class="text-2xl mb-2 capitalize font-semibold pb-6">{{ item.title }}</h3>
+            <p class="text-xl text-center tracking-tighter">{{ item.description }}</p>
           </div>
           </div>
         </div>
@@ -89,23 +89,23 @@ const carouselItems = ref([
   {
     image: "../src/assets/media/hero.jpg",
     alt: "Image 1",
-    title: "EdTech",
+    title: "Education Tech",
     description:
-      "Item 1 Description: This is some example text for the first carousel item.",
+      "This is some example text for the first carousel item.",
   },
   {
     image: "../src/assets/media/hero1.jpg",
     alt: "Image 2",
     title: "Software",
     description:
-      "Item 2 Description: This is some example text for the second carousel item.",
+      "This is some example text for the second carousel item.",
   },
   {
     image: "../src/assets/media/hero2.jpg",
     alt: "Image 3",
     title: "engineering",
     description:
-      "Item 3 Description: This is some example text for the third carousel item.",
+      "This is some example text for the third carousel item.",
   },
 
 ]);
