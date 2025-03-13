@@ -60,9 +60,9 @@
 <script setup>
 import { ref } from "vue";
 
-import bird from "../assets/bird.jpeg";
-import girl from "../assets/girl.jpeg";
-import chimp from "../assets/chimps.jpeg";
+import bird from "../assets/media/bird.jpeg";
+import girl from "../assets/media/girl.jpeg";
+import chimp from "../assets/media/chimps.jpeg";
 
 const images = ref([bird, girl, chimp]);
 
